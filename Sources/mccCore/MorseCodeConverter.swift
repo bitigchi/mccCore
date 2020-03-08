@@ -9,18 +9,34 @@ public struct MorseCodeConverter {
     public init() {}
     
     let morseDict = MorseCodeList()
-    let doubleQuotesArray = ["“","”","‟","″","„","˝","❝","❞","〞","〝","＂","〟","‶","‷","‴","⁗","‶","״"]
+    let doubleQuotesArray =
+        ["“","”","‟","″","„","˝","❝","❞","〞","〝","＂","〟","‶","‷","‴","⁗","‶","״"]
     let singleQuotesArray = ["‘","’","‛","‚","′","´","`","❛","❜","＇"]
     let hyphensAndDashesArray = ["–"," ­","–","‑","—","‒","‐","―","⁃"]
     
-    public func convertToMorse(textToConvert: String, withoutSpace: Bool) -> (String) {
-        // TODO: Implement a more elegant solution to replacing quotes, hyphens, and dashes
-        let textWithoutFancyDoubleQuotes = textToConvert.replaceDoubleQuotes(textToConvert, doubleQuotesArray: doubleQuotesArray)
-        let textWithoutFancyQuotes = textWithoutFancyDoubleQuotes.replaceSingleQuotes(textWithoutFancyDoubleQuotes, singleQuotesArray: singleQuotesArray)
-        let textWithoutFancyQuotesHyphensAndDashes = textWithoutFancyQuotes.replaceHyphensAndDashes(textWithoutFancyQuotes, hyphensAndDashesArray: hyphensAndDashesArray)
+    public func convertToMorse(textToConvert: String,
+                               withoutSpace: Bool) -> (String) {
+        // TODO: Implement a more elegant solution to replacing
+        // quotes, hyphens, and dashes
+        let textWithoutFancyDoubleQuotes =
+            textToConvert
+                .replaceDoubleQuotes(textToConvert,
+                                     doubleQuotesArray: doubleQuotesArray)
+        let textWithoutFancyQuotes =
+            textWithoutFancyDoubleQuotes
+                .replaceSingleQuotes(textWithoutFancyDoubleQuotes,
+                                     singleQuotesArray: singleQuotesArray)
+        let textWithoutFancyQuotesHyphensAndDashes =
+            textWithoutFancyQuotes
+                .replaceHyphensAndDashes(textWithoutFancyQuotes,
+                                         hyphensAndDashesArray:
+                                                    hyphensAndDashesArray)
         
         var morseText = ""
-        let characterArray = textWithoutFancyQuotesHyphensAndDashes.lowercased().map { String($0) }
+        let characterArray =
+            textWithoutFancyQuotesHyphensAndDashes
+                .lowercased()
+                .map { String($0) }
         
         for character in characterArray {
             for (key, value) in morseDict.morseCodeDictionary {
@@ -39,34 +55,40 @@ public struct MorseCodeConverter {
 }
 
 extension String {
-    func replaceDoubleQuotes(_ input: String, doubleQuotesArray: [String]) -> String {
+    func replaceDoubleQuotes(_ input: String,
+                             doubleQuotesArray: [String]) -> String {
         var textWithSimpleDoubleQuotes: String?
         
         for doubleQuote in doubleQuotesArray {
             if input.contains(doubleQuote) {
-                textWithSimpleDoubleQuotes = input.replacingOccurrences(of: doubleQuote, with: "\"")
+                textWithSimpleDoubleQuotes =
+                    input.replacingOccurrences(of: doubleQuote, with: "\"")
             }
         }
         return textWithSimpleDoubleQuotes ?? input
     }
     
-    func replaceSingleQuotes(_ input: String, singleQuotesArray: [String]) -> String {
+    func replaceSingleQuotes(_ input: String,
+                             singleQuotesArray: [String]) -> String {
         var textWithSimpleSingleQuotes: String?
         
         for singleQuote in singleQuotesArray {
             if input.contains(singleQuote) {
-                textWithSimpleSingleQuotes = input.replacingOccurrences(of: singleQuote, with: "'")
+                textWithSimpleSingleQuotes =
+                    input.replacingOccurrences(of: singleQuote, with: "'")
             }
         }
         return textWithSimpleSingleQuotes ?? input
     }
     
-    func replaceHyphensAndDashes(_ input: String, hyphensAndDashesArray: [String]) -> String {
+    func replaceHyphensAndDashes(_ input: String,
+                                 hyphensAndDashesArray: [String]) -> String {
         var textWithHyphensOrDashes: String?
         
         for hyphenOrDash in hyphensAndDashesArray {
             if input.contains(hyphenOrDash) {
-                textWithHyphensOrDashes = input.replacingOccurrences(of: hyphenOrDash, with: "-")
+                textWithHyphensOrDashes =
+                    input.replacingOccurrences(of: hyphenOrDash, with: "-")
             }
         }
         return textWithHyphensOrDashes ?? input

@@ -9,13 +9,20 @@ public struct mccCore {
     public init() {}
     let converter = MorseCodeConverter()
     
-    public func executeProgramFunction(textToConvert: String, withoutSpace: Bool, copy: Bool) -> String {
-        let conversionResult = converter.convertToMorse(textToConvert: textToConvert, withoutSpace: withoutSpace)
+    public func executeProgramFunction(textToConvert: String,
+                                       withoutSpace: Bool,
+                                       copy: Bool) -> String {
+        let conversionResult =
+            converter.convertToMorse(textToConvert: textToConvert,
+                                     withoutSpace: withoutSpace)
         
         if copy {
             copyToClipboard(textToCopy: conversionResult)
         }
-        return "\n\"" + textToConvert + "\" in morse: " + conversionResult + "\n"
+        return "\n\"" +
+            textToConvert +
+            "\" in morse: " +
+            conversionResult + "\n"
     }
     
     func copyToClipboard(textToCopy: String) {

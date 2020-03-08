@@ -98,8 +98,8 @@ struct MorseCodeList {
                                "ź": "--..-.",
                                "ż": "--..-"]
     
-    // TODO: Implement some kind of fancy initalization sequence for the interactive
-    // mode with the prosigns below
+    // TODO: Implement some kind of fancy initalization sequence
+    //for the interactive mode with the prosigns below
     let prosigns = ["endOfWork": "...-.-",
                     "error": "........",
                     "invitationToTransmit": "-.-",
