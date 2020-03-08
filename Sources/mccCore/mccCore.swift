@@ -1,8 +1,13 @@
 // mccCore.swift
 // Author: Emir Sarı
+// Copyright © 2019-2020 Emir Sarı. All rights reserved.
 // See LICENSE for details
 
-import AppKit
+#if os(OSX)
+ import AppKit
+#else
+ import Foundation
+#endif
 
 public struct mccCore {
     
@@ -24,11 +29,17 @@ public struct mccCore {
             "\" in morse: " +
             conversionResult + "\n"
     }
-    
     func copyToClipboard(textToCopy: String) {
-        let pasteBoard = NSPasteboard.general
-        pasteBoard.clearContents()
-        pasteBoard.setString(textToCopy, forType: .string)
-        print("Result copied to clipboard!")
+        #if os(OSX)
+         let pasteBoard = NSPasteboard.general
+         pasteBoard.clearContents()
+         pasteBoard.setString(textToCopy, forType: .string)
+         print("Result copied to clipboard!")
+        #else
+         print("""
+            Copying to system clipboard is only available on macOS.
+            On Linux, try 'mcc ... | xclip -selection clipboard'.)
+         """)
+        #endif
     }
 }
