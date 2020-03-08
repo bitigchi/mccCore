@@ -16,7 +16,8 @@ public struct mccCore {
     
     public func executeProgramFunction(textToConvert: String,
                                        withoutSpace: Bool,
-                                       copy: Bool) -> String {
+                                       copy: Bool,
+                                       morseOnly: Bool) -> String {
         let conversionResult =
             converter.convertToMorse(textToConvert: textToConvert,
                                      withoutSpace: withoutSpace)
@@ -24,11 +25,17 @@ public struct mccCore {
         if copy {
             copyToClipboard(textToCopy: conversionResult)
         }
-        return "\n\"" +
+        
+        if morseOnly {
+            return conversionResult
+        } else {
+            return "\n\"" +
             textToConvert +
             "\" in morse: " +
             conversionResult + "\n"
+        }
     }
+    
     func copyToClipboard(textToCopy: String) {
         #if os(OSX)
          let pasteBoard = NSPasteboard.general
@@ -38,7 +45,8 @@ public struct mccCore {
         #else
          print("""
             Copying to system clipboard is only available on macOS.
-            On Linux, try 'mcc ... | xclip -selection clipboard'.)
+            On Linux, try pipeing 'xclip -selection clipboard', or
+            any other clipboard manager you might use.
          """)
         #endif
     }
