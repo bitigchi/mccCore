@@ -15,7 +15,7 @@ public struct mccCore {
         if copy {
             copyToClipboard(textToCopy: conversionResult)
         }
-        return "\n" + textToConvert + " in morse: " + conversionResult + "\n"
+        return "\n\"" + textToConvert + "\" in morse: " + conversionResult + "\n"
     }
     
     func copyToClipboard(textToCopy: String) {
