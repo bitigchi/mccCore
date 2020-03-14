@@ -31,7 +31,7 @@ public struct mccCore {
         } else {
             return "\n\"" +
             textToConvert +
-            "\" in morse: " +
+            NSLocalizedString("\" in morse: ", comment: "Output line") +
             conversionResult + "\n"
         }
     }
@@ -41,13 +41,14 @@ public struct mccCore {
          let pasteBoard = NSPasteboard.general
          pasteBoard.clearContents()
          pasteBoard.setString(textToCopy, forType: .string)
-         print("Result copied to clipboard!")
+         print(NSLocalizedString("Result copied to clipboard!",
+                                 comment: "Clipboard confirmation"))
         #else
-         print("""
+         print(NSLocalizedString("""
             Copying to system clipboard is only available on macOS.
             On Linux, try pipeing 'xclip -selection clipboard', or
             any other clipboard manager you might use.
-         """)
+         """, comment: "Error message"))
         #endif
     }
 }
