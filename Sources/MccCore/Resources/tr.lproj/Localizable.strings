@@ -1,0 +1,18 @@
+/* Error message */
+"
+            Copying to system clipboard is only available on macOS.
+            On Linux, try pipeing 'xclip -selection clipboard', or
+            any other clipboard manager you might use.
+            On Haiku, use the 'clipboard' CLI utility.
+         " = "
+            Sistem panosuna kopyalama yalnızca macOS üzerinde kullanılabilir.
+            Linux üzerinde 'xclip -selection clipboard'u veya başka bir pano
+            yöneticisini çıktıya kanallayın.
+            Haiku üzerinde 'clipboard' komut satırı izlencesini kullanın.
+         ";
+
+/* Clipboard confirmation */
+"Result copied to clipboard!" = "Sonuç panoya kopyalandı!";
+
+/* Output line */
+"\n\"%1$@\" in morse: %2$@\n" = "\n\"%1$@\" mors koduyla: %2$@\n";

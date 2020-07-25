@@ -1,0 +1,18 @@
+/* Error message */
+"
+            Copying to system clipboard is only available on macOS.
+            On Linux, try pipeing 'xclip -selection clipboard', or
+            any other clipboard manager you might use.
+            On Haiku, use the 'clipboard' CLI utility.
+         " = "
+            Копирование в системный буфер обмена доступно только на macOS.
+            На Линукс попробуйте передать по конвейеру 'xclip-selection clipboard'
+            или любой другой менеджер буфера обмена, который вы используете.
+            На Хайку используйте утилиту командной строки 'clipboard'.
+         ";
+
+/* Clipboard confirmation */
+"Result copied to clipboard!" = "Результат скопирован в буфер обмена!";
+
+/* Output line */
+"\n\"%1$@\" in morse: %2$@\n" = "\n\"%1$@\" в Морзе: %2$@\n";

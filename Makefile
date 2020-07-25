@@ -6,8 +6,9 @@ PROJECT ?= mcc
 REPODIR = $(shell pwd)
 BUILDDIR = $(REPODIR)/.build
 RELEASEDIR = $(BUILDDIR)/release/$(PROJECT)
+BUNDLEDIR = $(BUILDDIR)/release/$(PROJECT)_$(PROJECT).bundle
 SOURCES = $(wildcard $(srcdir)/**/*.swift)
-VERSION = 0.1.5
+VERSION = 0.1.7
 
 mcc: $(SOURCES)
 	@echo "Building Swift package..."
