@@ -4,13 +4,12 @@
 // See LICENSE for details
 
 #if os(OSX)
- import AppKit
+import AppKit
 #else
- import Foundation
+import Foundation
 #endif
 
-public struct mccCore {
-    
+public struct MccCore {
     public init() {}
     let converter = MorseCodeConverter()
     
@@ -29,14 +28,15 @@ public struct mccCore {
         if morseOnly {
             return conversionResult
         } else {
-            return "\n\"" +
-            textToConvert +
-            NSLocalizedString("\" in morse: ", comment: "Output line") +
-            conversionResult + "\n"
+            return NSLocalizedString(
+                String(format: "\n\"%1$@\" in morse: %2$@\n",
+                       textToConvert, conversionResult),
+                bundle: .module,
+                comment: "Output line")
         }
     }
     
-    func copyToClipboard(textToCopy: String) {
+    public func copyToClipboard(textToCopy: String) {
         #if os(OSX)
          let pasteBoard = NSPasteboard.general
          pasteBoard.clearContents()
@@ -48,7 +48,22 @@ public struct mccCore {
             Copying to system clipboard is only available on macOS.
             On Linux, try pipeing 'xclip -selection clipboard', or
             any other clipboard manager you might use.
+            On Haiku, use the 'clipboard' CLI utility.
          """, comment: "Error message"))
         #endif
     }
 }
+
+//class Locale {
+//    let bundle = localizationBundle(
+//        forLanguage: Locale.current.languageCode ?? "en")
+//    
+//    func localizationBundle(forLanguage language: String) -> Bundle? {
+//         if let path = Bundle.module.path(forResource: language,
+//                                          ofType: "lproj") {
+//             return Bundle(path: path)
+//         } else {
+//             return nil
+//         }
+//     }
+//}

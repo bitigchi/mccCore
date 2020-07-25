@@ -6,41 +6,59 @@
 import Foundation
 
 public struct MorseCodeConverter {
-    
     public init() {}
     
     let morseDict = MorseCodeList()
-    let doubleQuotesArray =
-        ["“","”","‟","″","„","˝","❝","❞","〞","〝","＂","〟","‶","‷","‴","⁗","‶","״"]
+    let doubleQuotesArray = ["“",
+                             "”",
+                             "‟",
+                             "″",
+                             "„",
+                             "˝",
+                             "❝",
+                             "❞",
+                             "〞",
+                             "〝",
+                             "＂",
+                             "〟",
+                             "‶",
+                             "‷",
+                             "‴",
+                             "⁗",
+                             "‶",
+                             "״"
+                             ]
     let singleQuotesArray = ["‘","’","‛","‚","′","´","`","❛","❜","＇"]
     let hyphensAndDashesArray = ["–"," ­","–","‑","—","‒","‐","―","⁃"]
     
     public func convertToMorse(textToConvert: String,
                                withoutSpace: Bool) -> (String) {
-        // TODO: Implement a more elegant solution to replacing
-        // quotes, hyphens, and dashes
         let textWithoutFancyDoubleQuotes =
-            textToConvert
-                .replaceDoubleQuotes(textToConvert,
-                                     doubleQuotesArray: doubleQuotesArray)
+            textToConvert.replaceDoubleQuotes(
+                textToConvert,doubleQuotesArray: doubleQuotesArray)
         let textWithoutFancyQuotes =
-            textWithoutFancyDoubleQuotes
-                .replaceSingleQuotes(textWithoutFancyDoubleQuotes,
-                                     singleQuotesArray: singleQuotesArray)
+            textWithoutFancyDoubleQuotes.replaceSingleQuotes(
+                textWithoutFancyDoubleQuotes,
+                singleQuotesArray: singleQuotesArray)
         let textWithoutFancyQuotesHyphensAndDashes =
-            textWithoutFancyQuotes
-                .replaceHyphensAndDashes(textWithoutFancyQuotes,
-                                         hyphensAndDashesArray:
-                                                    hyphensAndDashesArray)
+            textWithoutFancyQuotes.replaceHyphensAndDashes(
+                textWithoutFancyQuotes,
+                hyphensAndDashesArray: hyphensAndDashesArray)
         
         var morseText = ""
-        let characterArray =
-            textWithoutFancyQuotesHyphensAndDashes
-                .lowercased()
+        var characterArray = [String]()
+        
+        if textToConvert.contains("İ") {
+            characterArray = textWithoutFancyQuotesHyphensAndDashes
+                .lowercased(with: Locale(identifier: "tr"))
                 .map { String($0) }
+        } else {
+            characterArray = textWithoutFancyQuotesHyphensAndDashes.lowercased()
+                .map { String($0) }
+        }
         
         for character in characterArray {
-            for (key, value) in morseDict.morseCodeDictionary {
+            for (key, value) in morseDict.latinMorseCode {
                 if key.contains(character) {
                     switch withoutSpace {
                     case true:

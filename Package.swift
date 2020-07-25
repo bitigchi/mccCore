@@ -1,22 +1,24 @@
-// swift-tools-version:5.1
-// The swift-tools-version declares the minimum version of Swift required to build this package.
+// swift-tools-version:5.3
 
 import PackageDescription
 
 let package = Package(
-    name: "mccCore",
+    name: "MccCore",
+    defaultLocalization: "en",
     products: [
         .library(
-            name: "mccCore",
-            targets: ["mccCore"]),
+            name: "MccCore",
+            targets: ["MccCore"]),
     ],
     dependencies: [],
     targets: [
         .target(
-            name: "mccCore",
-            dependencies: []),
+            name: "MccCore",
+            dependencies: [],
+            resources: [.process("Resources")]
+        ),
         .testTarget(
-            name: "mccCoreTests",
-            dependencies: ["mccCore"]),
+            name: "MccCoreTests",
+            dependencies: ["MccCore"]),
     ]
 )

@@ -1,7 +1,7 @@
 import XCTest
-@testable import mccCore
+@testable import MccCore
 
-final class mccCoreTests: XCTestCase {
+final class McCoreTests: XCTestCase {
     func testExample() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct
