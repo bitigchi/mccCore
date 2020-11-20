@@ -29,10 +29,9 @@ public struct MccCore {
             return conversionResult
         } else {
             return NSLocalizedString(
-                String(format: "\n\"%1$@\" in morse: %2$@\n",
-                       textToConvert, conversionResult),
+                "\n\"\(textToConvert)\" in morse: \(conversionResult)",
                 bundle: .module,
-                comment: "Output line")
+                comment: "Output line") + "\n"
         }
     }
     
