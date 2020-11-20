@@ -28,10 +28,10 @@ public struct MccCore {
         if morseOnly {
             return conversionResult
         } else {
-            return NSLocalizedString(
-                "\n\"\(textToConvert)\" in morse: \(conversionResult)",
+            return "\(textToConvert)" + NSLocalizedString(
+                " in Morse: ",
                 bundle: .module,
-                comment: "Output line") + "\n"
+                comment: "Output line") + "\(conversionResult)\n"
         }
     }
     

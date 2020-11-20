@@ -14,4 +14,4 @@
 "Result copied to clipboard!" = "Sonuç panoya kopyalandı!";
 
 /* Output line */
-"\n\"%1$@\" in morse: %2$@" = "\n\"%1$@\" mors koduyla: %2$@";
+" in Morse: " = " Mors koduyla: ";
