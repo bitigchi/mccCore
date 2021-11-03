@@ -33,17 +33,15 @@ public struct MorseCodeConverter {
     
     public func convertToMorse(textToConvert: String,
                                withoutSpace: Bool) -> (String) {
-        let textWithoutFancyDoubleQuotes =
-            textToConvert.replaceDoubleQuotes(
-                textToConvert,doubleQuotesArray: doubleQuotesArray)
-        let textWithoutFancyQuotes =
-            textWithoutFancyDoubleQuotes.replaceSingleQuotes(
-                textWithoutFancyDoubleQuotes,
-                singleQuotesArray: singleQuotesArray)
-        let textWithoutFancyQuotesHyphensAndDashes =
-            textWithoutFancyQuotes.replaceHyphensAndDashes(
-                textWithoutFancyQuotes,
-                hyphensAndDashesArray: hyphensAndDashesArray)
+        let textWithoutFancyDoubleQuotes = textToConvert
+            .replaceDoubleQuotes(textToConvert,
+                                 doubleQuotesArray: doubleQuotesArray)
+        let textWithoutFancyQuotes = textWithoutFancyDoubleQuotes
+            .replaceSingleQuotes(textWithoutFancyDoubleQuotes,
+                                 singleQuotesArray: singleQuotesArray)
+        let textWithoutFancyQuotesHyphensAndDashes = textWithoutFancyQuotes
+            .replaceHyphensNDashes(textWithoutFancyQuotes,
+                                   hyphensAndDashesArray: hyphensAndDashesArray)
         
         var morseText = ""
         var characterArray = [String]()
@@ -73,7 +71,6 @@ public struct MorseCodeConverter {
     }
 }
 
-// TODO: Find out why the extension stops working when moved out of the file
 extension String {
     func replaceDoubleQuotes(_ input: String,
                              doubleQuotesArray: [String]) -> String {
@@ -101,7 +98,7 @@ extension String {
         return textWithSimpleSingleQuotes ?? input
     }
 
-    func replaceHyphensAndDashes(_ input: String,
+    func replaceHyphensNDashes(_ input: String,
                                  hyphensAndDashesArray: [String]) -> String {
         var textWithHyphensOrDashes: String?
 

@@ -12,6 +12,3 @@
 
 /* Clipboard confirmation */
 "Result copied to clipboard!" = "Результат скопирован в буфер обмена!";
-
-/* Output line */
-" in Morse: " = " в Морзе: ";

@@ -3,22 +3,22 @@
 import PackageDescription
 
 let package = Package(
-    name: "MccCore",
+    name: "mccCore",
     defaultLocalization: "en",
     products: [
         .library(
-            name: "MccCore",
-            targets: ["MccCore"]),
+            name: "mccCore",
+            targets: ["mccCore"]),
     ],
     dependencies: [],
     targets: [
         .target(
-            name: "MccCore",
+            name: "mccCore",
             dependencies: [],
             resources: [.process("Resources")]
         ),
         .testTarget(
-            name: "MccCoreTests",
-            dependencies: ["MccCore"]),
+            name: "mccCoreTests",
+            dependencies: ["mccCore"]),
     ]
 )

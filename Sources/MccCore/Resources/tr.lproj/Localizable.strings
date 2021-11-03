@@ -12,6 +12,3 @@
 
 /* Clipboard confirmation */
 "Result copied to clipboard!" = "Sonuç panoya kopyalandı!";
-
-/* Output line */
-" in Morse: " = " Mors koduyla: ";
